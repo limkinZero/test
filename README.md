@@ -17,3 +17,32 @@
   * [AWE 4.0.0](https://git.almis.com/awe-team/awe/issues?milestone_title=awe+v4.0.0&state=closed) - **[Impacts](https://git.almis.com/awe-team/awe/issues?scope=all&utf8=%E2%9C%93&state=closed&milestone_title=awe%20v4.0.0&label_name[]=Impact)**
 * **Migration guides**
   * [AWE 4.0.0](wiki/awe-4.0-migration-guide.md)
+  
+  <img src='https://g.gravizo.com/svg?
+@startuml;
+
+actor User;
+participant "First Class" as A;
+participant "Second Class" as B;
+participant "Last Class" as C;
+
+User -> A: DoWork;
+activate A;
+
+A -> B: Create Request;
+activate B;
+
+B -> C: DoWork;
+activate C;
+
+C --> B: WorkDone;
+destroy C;
+
+B --> A: Request Created;
+deactivate B;
+
+A --> User: Done;
+deactivate A;
+
+@enduml
+'>
